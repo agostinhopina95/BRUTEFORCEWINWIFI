@@ -46,7 +46,7 @@ def searchWIFI(ssid):
     return 0
 
 r = input('Please disconnect your Wi-Fi before press "F"? ')
-if f.lower() == 'f':
+if r.lower() == 'f':
     search = ARRSSID() #All networks near my home
     start_time = time.time()
     for ssid in search:
