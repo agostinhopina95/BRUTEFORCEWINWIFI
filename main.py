@@ -19,6 +19,7 @@ def searchWIFI(ssid):
         '''
         Clutter an array for each digit
         '''
+        time.sleep(0.5)
         random.shuffle(chars)
         Rchars.append(chars)
 
