@@ -45,9 +45,13 @@ def searchWIFI(ssid):
                                             return 1
     return 0
 
-search = ARRSSID() #All networks near my home
-start_time = time.time()
-for ssid in search:
-    if(searchWIFI(ssid)==1):
-        print("--- %s seconds ---" % (round(time.time() - start_time,3)))
-        break
+r = input('Please disconnect your Wi-Fi before press "F"? ')
+if f.lower() == 'f':
+    search = ARRSSID() #All networks near my home
+    start_time = time.time()
+    for ssid in search:
+        if(searchWIFI(ssid)==1):
+            print("--- %s seconds ---" % (round(time.time() - start_time,3)))
+            break
+else:
+    print("Disconnect internet and try again :(")
