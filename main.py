@@ -46,11 +46,8 @@ def searchWIFI(ssid):
     return 0
 
 search = ARRSSID() #All networks near my home
-myNetwork = 'MYWIFI' #Put here the network that you already know the password. If not, you can leave it empty.
 start_time = time.time()
-
 for ssid in search:
-    if myNetwork != ssid: #Accepts only unknown networks
-        if(searchWIFI(ssid)==1):
-            print("--- %s seconds ---" % (round(time.time() - start_time,3)))
-            break
+    if(searchWIFI(ssid)==1):
+        print("--- %s seconds ---" % (round(time.time() - start_time,3)))
+        break

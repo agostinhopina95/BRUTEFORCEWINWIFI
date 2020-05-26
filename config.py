@@ -27,7 +27,7 @@ def is_current(id = None):
         ssid = ssid.replace("\r","")
         ssid = ssid.split("\n")[19]
         ssid = (ssid.split(": ")[1]).strip()
-        if id != None and ssid == id:
+        if ssid == id:
             return True
         else:
             return ssid
@@ -53,7 +53,11 @@ def ARRSSID():
             SSID.append(ssid.split(': ')[1])
         except:
             pass
-    return SSID
+    nSSID = []
+    for id in SSID:
+        if not is_current(id)==True:
+            nSSID.append(id)
+    return nSSID
 
 def SSIDPASS(SSID = None):
     arr = []
