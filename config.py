@@ -1,7 +1,14 @@
 import subprocess
 import collections
 import xml.etree.cElementTree as ET
+import pathlib
 import socket
+
+def XMLPATH(nameSSID):
+    path = str(pathlib.Path(__file__).parent.absolute())
+    path = path.replace('\\', '/')[1:]
+    path = 'C'+path+'/wi-fi/'+str(nameSSID)+'.xml'
+    return path
 
 def is_connected():
     try:
@@ -111,5 +118,5 @@ def setWIFI(name, password):
     ET.SubElement(sharedKey, "protected").text = "false"
     ET.SubElement(sharedKey, "keyMaterial").text = password
     tree = ET.ElementTree(WLANProfile)
-    tree.write("wi-fi/"+name+".xml")
-    connect_to_profile("wi-fi/"+name+".xml")
+    tree.write(XMLPATH(name))
+    connect_to_profile(XMLPATH(name))
