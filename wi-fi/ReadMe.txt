@@ -1,0 +1,1 @@
+Here inside the /wi-fi folder will appear all the complete SSID.

