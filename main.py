@@ -1,4 +1,5 @@
 from config import *
+import random
 import time
 
 '''
@@ -12,15 +13,24 @@ def searchWIFI(ssid):
         "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
         "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
     ]
+    
+    Rchars = []
+    for i in range(0,8):
+        '''
+        Clutter an array for each digit
+        '''
+        random.shuffle(chars)
+        Rchars.append(chars)
+
     start_time = time.time()
-    for d1 in chars:
-        for d2 in chars:
-            for d3 in chars:
-                for d4 in chars:
-                    for d5 in chars:
-                        for d6 in chars:
-                            for d7 in chars:
-                                for d8 in chars:
+    for d1 in Rchars[0]:
+        for d2 in Rchars[1]:
+            for d3 in Rchars[2]:
+                for d4 in Rchars[3]:
+                    for d5 in Rchars[4]:
+                        for d6 in Rchars[5]:
+                            for d7 in Rchars[6]:
+                                for d8 in Rchars[7]:
                                     pasw = d1+d2+d3+d4+d5+d6+d7+d8 #The password length is 8
                                     print(ssid + ' : ' + pasw)
                                     if mkSense(pasw):
