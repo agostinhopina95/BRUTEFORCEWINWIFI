@@ -2,6 +2,8 @@ import subprocess
 import collections
 import xml.etree.cElementTree as ET
 import pathlib
+import os.path
+from os import path
 import socket
 
 def XMLPATH(nameSSID):
@@ -9,6 +11,9 @@ def XMLPATH(nameSSID):
     path = path.replace('\\', '/')[1:]
     path = 'C'+path+'/wi-fi/'+str(nameSSID)+'.xml'
     return path
+
+def SSIDisset(SSID):
+    return path.exists(XMLPATH(SSID))
 
 def is_connected():
     try:
@@ -55,7 +60,7 @@ def ARRSSID():
             pass
     nSSID = []
     for id in SSID:
-        if not is_current(id)==True:
+        if not is_current(id)==True and not SSIDisset(id):
             nSSID.append(id)
     return nSSID
 
