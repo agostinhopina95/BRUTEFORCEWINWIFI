@@ -28,7 +28,7 @@ def searchWIFI(ssid):
                                     if mkSense(pasw):
                                         '''
                                         Accepts one repetition a maximum of three times
-                                        Ex: AAA36274
+                                        Ex: AAA36274 or AA36A274 or ...
                                         In this case the maximum that the letter 'A' can repeat is 
                                         three times.
                                         '''
@@ -56,7 +56,7 @@ def searchWIFI(ssid):
             return 0
 
 search = ARRSSID() #All networks near my home
-myNetwork = 'NOWO-3EEDA' #Put here the network that you already know the password
+myNetwork = 'MYWIFI' #Put here the network that you already know the password
 
 for ssid in search:
     if myNetwork != ssid: #Accepts only unknown networks
