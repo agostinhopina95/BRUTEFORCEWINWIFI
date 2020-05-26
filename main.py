@@ -56,7 +56,7 @@ def searchWIFI(ssid):
             return 0
 
 search = ARRSSID() #All networks near my home
-myNetwork = 'MYWIFI' #Put here the network that you already know the password
+myNetwork = 'NOWO-3EEDA' #Put here the network that you already know the password
 
 for ssid in search:
     if myNetwork != ssid: #Accepts only unknown networks
